@@ -1,0 +1,32 @@
+.section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 950px;
+}
+.card{
+  border: 1px solid gray;
+  width: 48%;
+  margin: 5px;
+  display: flex;
+  padding: 10px;
+}
+.desc{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.photo{
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
