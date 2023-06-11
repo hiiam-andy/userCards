@@ -4,7 +4,7 @@ import MyInput from '../UI/input/MyInput'
 import MyButton from '../UI/button/MyButton'
 
 export default function AddUserForm({create}) {
-  const [user, setUser]=useState({name:'', email:''})
+  const [user, setUser]=useState({firstName:'', email:''})
   const [res,setRes]=useState('')
 
   const addUser = (e)=>{
@@ -12,11 +12,11 @@ export default function AddUserForm({create}) {
     const newUser = {
       ...user, id:Date.now()
     }
-    if( newUser.name === '' || newUser.email === '' ){
+    if( newUser.firstName === '' || newUser.email === '' ){
       setRes('Не все поля заполнены')
     } else {
       create(newUser)
-      setUser({name:'', email:''})
+      setUser({firstName:'', email:''})
       setRes('')
     }
 }
@@ -26,9 +26,15 @@ export default function AddUserForm({create}) {
     <form>
 
       <MyInput
-        onChange={e=>setUser({...user, name:e.target.value})}
-        value={user.name}
+        onChange={e=>setUser({...user, firstName:e.target.value})}
+        value={user.firstName}
         placeholder='Имя'
+      />
+
+      <MyInput
+        onChange={e=>setUser({...user, lasttName:e.target.value})}
+        value={user.lastName}
+        placeholder='Фамилия'
       />
 
       <MyInput 

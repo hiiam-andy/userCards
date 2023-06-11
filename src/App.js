@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
+import './styles/style.css'
 import UsersList from "./components/User/UsersList";
 import Header from './components/Header/header'
 import Footer from "./components/Footer/Footer";
-
-import './styles/style.css'
 import PostUsers from "./API/PostUsers";
+import { getPageCount, getPagesArray } from "./utils/pages";
+import MyButton from "./components/UI/button/MyButton";
 
 function App() {
 
   const [users,setUsers] = useState([])
   const [modalVisible,setModalVisible] = useState(false)
+  const [totalPages, setTotalPages] = useState(0)
+  const [limit, setLimit] = useState(6)
+  const [skip, setSkip] = useState(0)
+
+  let pagesArray = getPagesArray(totalPages)
 
 useEffect(()=>{
   fetchUsers()
 }, [])
 
   async function fetchUsers(){
-    const users = await PostUsers.getAll()
-    setUsers(users)
+    const response = await PostUsers.getAll(limit, skip)
+    setUsers(response.users)
+    const totalCount = response.total
+    setTotalPages(getPageCount(totalCount, limit))
   }
   
   const createUser =(newUser)=> {
@@ -61,6 +69,11 @@ useEffect(()=>{
         />
       : <h1 style={{display:'flex', justifyContent:'center'}}>Нет пользователей</h1>
     }
+    <div style={{display:'flex', justifyContent:'center'}}>
+    {pagesArray.map(page=>{
+      return <MyButton>{page}</MyButton>
+    })}
+    </div>
     <Footer/>
     </div>
   )

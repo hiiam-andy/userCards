@@ -2,6 +2,7 @@
 
 # dependencies
 /lessons
+/src2
 /node_modules
 /.pnp
 .pnp.js

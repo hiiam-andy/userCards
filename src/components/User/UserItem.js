@@ -8,14 +8,24 @@ export default function UserItem( {user, remove, edit, toggle} ) {
 
   return (
     <div className={styles.card}>
+
+      <img src={user.image} alt="userphoto" className={styles.photo}/>
+
       <div className={styles.desc}>
 
         {user.isEdit
         ? <MyInput 
-            value={user.name} 
-            onChange={ (event)=>edit(user.id, 'name', event) }
+            value={user.firstName} 
+            onChange={ (event)=>edit(user.id, 'firstName', event) 
+          }
           />
-        : <p className={styles.name}>{user.name}</p>
+        : <p className={styles.name}>{user.firstName +' '+ user.lastName}</p>
+        }
+        {user.isEdit
+        && <MyInput 
+            value={user.lastName} 
+            onChange={ (event)=>edit(user.id, 'lastName', event) }
+          />
         }
 
         {user.isEdit
@@ -26,10 +36,6 @@ export default function UserItem( {user, remove, edit, toggle} ) {
         : <p className={styles.email}>{user.email}</p>
         }
 
-        <div className={styles.photo}>Фото</div>
-        
-
-      </div>
         <div>
           <MyButton onClick={ ()=>toggle(user.id) }>
             {user.isEdit ? 'сохранить' : 'редактировать'}
@@ -39,6 +45,7 @@ export default function UserItem( {user, remove, edit, toggle} ) {
             Удалить
           </MyButton>
         </div>
+      </div>
   </div>
   )
 }

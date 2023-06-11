@@ -22,7 +22,7 @@
   flex-direction: column;
   width: 50%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 .photo{
   display: flex;
