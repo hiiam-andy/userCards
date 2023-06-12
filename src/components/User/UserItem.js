@@ -19,7 +19,7 @@ export default function UserItem( {user, remove, edit, toggle} ) {
             onChange={ (event)=>edit(user.id, 'firstName', event) 
           }
           />
-        : <p className={styles.name}>{user.firstName +' '+ user.lastName}</p>
+        : <p className={styles.name}>{user.id+': '+user.firstName +' '+ user.lastName}</p>
         }
         {user.isEdit
         && <MyInput 

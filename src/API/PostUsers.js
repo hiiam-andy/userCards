@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default class PostUsers {
-  static async getAll(limit=4, skip=0) {
+  static async getAll(limit, skip) {
     const response = await axios.get('https://dummyjson.com/users/', {
       params: {
         limit:limit,
