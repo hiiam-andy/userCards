@@ -4,6 +4,7 @@ import MyModal from '../UI/modal/MyModal'
 import AddUserForm from '../User/AddUserForm'
 
 import styles from '../../styles/Header.module.css'
+import { Link } from 'react-router-dom'
 
 export default function Header({modalVisible,setModalVisible,create}) {
   return (
@@ -12,6 +13,7 @@ export default function Header({modalVisible,setModalVisible,create}) {
         <p>Logo</p>
         <p>MyFriends</p>
       </div>
+      <Link to='/about'>О сайте</Link>
     <MyButton onClick={()=>setModalVisible(true)}>
       Добавить нового пользователя
     </MyButton>
